@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  plexconnect:
+    image: bjornaelvoet/plexconnect
+    container_name: plexconnect
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - ./PlexConnect:/plexconnect
+    # As we have a network bridge created for plex server, we an access the ports directly and don't need reverse proxying anymore
+    # We still need dns translation for plexconnnect however now towards 192.168.4.3
+    #ports:
+    #  - 8081:80/tcp
+    #  - 4443:443/tcp
+    #cap_add:
+    #  - NET_ADMIN
+    network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+    #networks:
+    #  docker-plex_plex:
+    #    ipv4_address: 192.168.4.3
+    build:
+      dockerfile: Dockerfile
+      #args:
+      #  #No args defined
+      #  - DUMMY=dummy
+      context: .
+
+# Running plexconnect on the same subnet (bridged network) as plex
+# Means plex must be running before we can start this one
+#networks:
+#  docker-plex_plex:
+#    external: true

@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  dovecot:
+    image: bjornaelvoet/dovecot
+    container_name: dovecot
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/dovecot:/conf:ro
+      - /Data/maildata:/maildata
+      - /Data/bjorn_aelvoet/Maildir:/import
+    ports:
+      - "143:143/tcp"
+      - "993:993/tcp"
+    #cap_add:
+    #  - NET_ADMIN
+    network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+    domainname: aelvoetnet.be
+    hostname: server01
+    
+    build:
+      dockerfile: Dockerfile
+      #args:
+      #  #No args defined
+      #  - DUMMY=dummy
+      context: .

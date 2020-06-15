@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  ddclient:
+    image: linuxserver/ddclient:amd64-latest
+    container_name: ddclient
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/ddclient:/config
+    #network_mode: host

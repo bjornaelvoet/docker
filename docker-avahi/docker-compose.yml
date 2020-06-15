@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  avahi:
+    image: bjornaelvoet/avahi
+    container_name: avahi
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/avahi:/conf:ro
+      - ../server-conf/avahi/services:/etc/avahi/services:ro
+    ports:
+      - "5353:5353/udp"
+    #cap_add:
+    #  - NET_ADMIN
+    network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+    domainname: aelvoetnet.be
+    hostname: server01
+    
+    #build:
+    #  dockerfile: Dockerfile
+    #  #args:
+    #  #  #No args defined
+    #  #  - DUMMY=dummy
+    #  context: .

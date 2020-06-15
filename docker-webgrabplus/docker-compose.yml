@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  webgrabplus:
+    image: linuxserver/webgrabplus
+    container_name: webgrabplus
+    restart: always
+    # Run as normal user
+    #user: 1000:1000
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/webgrabplus/:/config
+      - /home/bjorn_aelvoet/docker_data/epg/:/data
+    #ports:
+    #  - "445:445/tcp"
+    #cap_add:
+    #  - NET_ADMIN
+    #network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+
+    #build:
+    #  dockerfile: Dockerfile
+    #  #args:
+    #  #  #No args defined
+    #  #  - DUMMY=dummy
+    #  context: .

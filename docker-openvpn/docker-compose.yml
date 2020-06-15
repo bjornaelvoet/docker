@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+  openvpn_tcp:
+    image: bjornaelvoet/openvpn
+    container_name: openvpn_tcp
+    restart: always
+    env_file: ${ENVIRONMENT}.env_tcp
+    #user: ${UID}:${GID}
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/openvpn/conf:/conf:ro
+      - ../server-conf/openvpn/pki:/pki:ro
+    ports:
+      - "1195:1195/tcp"
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    network_mode: host
+    privileged: true
+    #stdin_open: true
+    #tty: true
+
+  openvpn_udp:
+    image: bjornaelvoet/openvpn
+    container_name: openvpn_udp
+    restart: always
+    env_file: ${ENVIRONMENT}.env_udp
+    #user: ${UID}:${GID}
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/openvpn/conf:/conf:ro
+      - ../server-conf/openvpn/pki:/pki:ro
+    ports:
+      - "1194:1194/udp"
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    network_mode: host
+    privileged: true
+    depends_on:
+      # First let the tcp startup
+      - openvpn_tcp
+    #stdin_open: true
+    #tty: true
+
+    build:
+      dockerfile: Dockerfile
+      #args:
+      #  #No args defined
+      #  - DUMMY=dummy
+      context: .

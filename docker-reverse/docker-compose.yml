@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  reverse:
+    image: nginx:alpine
+    container_name: reverse
+    restart: always
+    # Run as normal user
+    #user: ${UID}:${GID}
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/reverse/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../server-conf/openvpn/pki:/etc/ssl/private:ro
+      - ../server-conf/plexconnect:/plexconnect:ro
+      - ../server-conf/plex:/plex:ro
+    ports:
+      - "80:80/tcp"
+      - "443:443/tcp"
+    #cap_add:
+    #  - NET_ADMIN
+    #network_mode: host
+    #dns: 192.168.1.2
+    #dns_search: aelvoetnet.be
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+    #command: [nginx-debug, '-g', 'daemon off;']

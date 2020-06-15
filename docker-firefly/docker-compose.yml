@@ -1,0 +1,66 @@
+version: '3.7'
+
+services:
+  firefly:
+    image: jc5x/firefly-iii
+    depends_on:
+      - postgres
+    container_name: firefly
+    restart: always
+    # Run as normal user
+    #user: ${UID}:${GID}
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ../server-conf/firefly/${ENVIRONMENT}.env_firefly
+    volumes:
+      # Referencing the server-conf git repo
+      - /Data/docker_data/firefly_export:/var/www/firefly-iii/storage/export
+      - /Data/docker_data/firefly_upload:/var/www/firefly-iii/storage/upload
+      # entrypoint needs the user id to know; so pass the host passwd to fix
+      - /etc/passwd:/etc/passwd:ro  
+    ports:
+      - "8082:80/tcp"
+    networks:
+      - firefly
+    #cap_add:
+    #  - NET_ADMIN
+    #network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+  postgres:
+    image: "postgres:10"
+    container_name: firefly_postgres
+    restart: always
+    # Run as normal user
+    user: ${UID}:${GID}
+    env_file: ../server-conf/firefly/${ENVIRONMENT}.env_postgres
+    networks: 
+      - firefly
+    volumes: 
+      - /Data/docker_data/firefly_postgres:/var/lib/postgresql/data
+      # initdb needs the user id to know; so pass the host passwd to fix
+      - /etc/passwd:/etc/passwd:ro
+  csvimport:
+    image: fireflyiii/csv-importer:develop
+    depends_on:
+      - firefly
+    container_name: firefly_csvimport
+    restart: always
+    # Run as normal user
+    #user: ${UID}:${GID}
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ../server-conf/firefly/${ENVIRONMENT}.env_csvimport
+    ports:
+      - "8083:80/tcp"
+    networks:
+      - firefly
+    #cap_add:
+    #  - NET_ADMIN
+    #network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+networks:
+  firefly:
+    name: firefly
+    #driver: bridge

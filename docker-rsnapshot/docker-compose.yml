@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  rsnapshot:
+    image: bjornaelvoet/rsnapshot
+    container_name: rsnapshot
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    # Run as normal user
+    #user: ${RUNAS_USERID}:${RUNAS_GROUPID}
+    volumes:
+      # Referencing the server-conf git repo
+      - ../server-conf/rsnapshot:/conf:ro
+      - /Data:/data:ro
+      - /hdd_backup:/backup
+    #cap_add:
+    #  - NET_ADMIN
+    network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+
+    build:
+      dockerfile: Dockerfile
+      #args:
+      #  #No args defined
+      #  - DUMMY=dummy
+      context: .

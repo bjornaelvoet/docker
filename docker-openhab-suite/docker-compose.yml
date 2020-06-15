@@ -1,0 +1,77 @@
+version: '3.7'
+
+services:
+
+  openhab:
+    image: "openhab/openhab:latest-alpine"
+    container_name: openhab
+    env_file: ${ENVIRONMENT}.env_openhab
+    depends_on:
+      - influxdb
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    #network_mode: host
+    dns: 192.168.1.2
+    dns_search: aelvoetnet.be
+    networks:
+      - openhab
+    volumes:
+      - "../server-conf/openhab/openhab_addons:/openhab/addons"
+      - "../server-conf/openhab/openhab_conf:/openhab/conf"
+      - "/Data/docker_data/openhab_userdata:/openhab/userdata"
+
+  influxdb:
+    image: influxdb
+    container_name: openhab_influxdb
+    env_file: ${ENVIRONMENT}.env_influxdb
+    #user: ${UID}:${GID}
+    #ports:
+    #  - "8086:8086"
+    #  - "8083:8083"
+    #  - "8090:8090"  
+    networks:
+      - openhab
+    volumes:
+      - "/Data/docker_data/influxdb:/var/lib/influxdb"
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    container_name: openhab_grafana
+    env_file: ${ENVIRONMENT}.env_grafana
+    user: ${UID}:${GID}
+    depends_on:
+      - influxdb
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - openhab
+    volumes:
+      - "/Data/docker_data/grafana:/var/lib/grafana"
+    environment:
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      #GF_SERVER_DOMAIN: "localhost"
+      #GF_SERVER_ROOT_URL: "http://localhost:3000/grafana"
+      GF_USERS_DEFAULT_THEME: "light"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_BASIC_ENABLED: "false"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+
+networks:
+  openhab:
+    name: openhab
+
+#volumes:
+#  openhab_addons:
+#    driver: local
+#  openhab_conf:
+#    driver: local
+#  openhab_userdata:
+#    driver: local
+#  influxdb:
+#    driver: local
+#  grafana:
+#     driver: local

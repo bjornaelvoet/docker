@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+  plex:
+    image: plexinc/pms-docker
+    container_name: plex
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env_plex
+    volumes:
+      # Referencing the server-conf git repo
+      - /home/bjorn_aelvoet/docker_data/config_plex:/config
+      - /tmp/transcode_plex:/transcode
+      - /home/bjorn_aelvoet/docker_data/epg:/epg
+      # Allow everything to be accessed by Plex; allows for both serving the critical media (backed up) and the non-critical media (which is on a different hdd but mounted under /hdd2)  
+      - /:/data
+    # Pass USB DVB stick
+    devices:
+      - /dev/dvb:dev/dvb
+    ports:
+      - 32400:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    networks:
+      plex:
+        ipv4_address: 192.168.4.2
+    #network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+  plexconnect:
+    image: bjornaelvoet/plexconnect
+    container_name: plexconnect
+    restart: always
+    depends_on:
+      - plex
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env_plexconnect
+    volumes:
+      # Referencing the server-conf git repo
+      - ./PlexConnect:/plexconnect
+    ports:
+      - 8081:80/tcp
+      - 4443:443/tcp
+    networks:
+      plex:
+        ipv4_address: 192.168.4.3
+    #network_mode: host
+    privileged: true
+    #stdin_open: true
+    #tty: true
+networks:
+  plex:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.4.0/24

@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  ghost:
+    image: ghost:alpine
+    container_name: ghost
+    restart: always
+    # Run as normal user
+    user: ${UID}:${GID}
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      - /Data/docker_data/ghost:/var/lib/ghost/content:rw
+    ports:
+      - "2368:2368/tcp"
+    #cap_add:
+    #  - NET_ADMIN
+    #network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
