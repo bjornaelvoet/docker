@@ -10,7 +10,7 @@ services:
     # Run as normal user
     #user: ${UID}:${GID}
     # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
-    env_file: ../server-conf/firefly/${ENVIRONMENT}.env_firefly
+    env_file: ../../server-conf/firefly/${ENVIRONMENT}.env_firefly
     volumes:
       # Referencing the server-conf git repo
       - /Data/docker_data/firefly_export:/var/www/firefly-iii/storage/export
@@ -33,7 +33,7 @@ services:
     restart: always
     # Run as normal user
     user: ${UID}:${GID}
-    env_file: ../server-conf/firefly/${ENVIRONMENT}.env_postgres
+    env_file: ../../server-conf/firefly/${ENVIRONMENT}.env_postgres
     networks: 
       - firefly
     volumes: 
@@ -49,7 +49,7 @@ services:
     # Run as normal user
     #user: ${UID}:${GID}
     # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
-    env_file: ../server-conf/firefly/${ENVIRONMENT}.env_csvimport
+    env_file: ../../server-conf/firefly/${ENVIRONMENT}.env_csvimport
     ports:
       - "8083:80/tcp"
     networks:

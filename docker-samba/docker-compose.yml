@@ -11,7 +11,7 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/samba:/conf:ro
+      - ../../server-conf/samba:/conf:ro
       - /Data/bjorn_aelvoet:/home/bjorn_aelvoet
       - /Data/eva_vandevelde:/home/eva_vandevelde
       - /Data/jasper_aelvoet:/home/jasper_aelvoet
@@ -21,6 +21,7 @@ services:
       - /hdd_extern/media:/home/media_nobackup
       - /Data/media/music/Official:/home/itunes
       - /hdd_extern:/home/hdd_extern
+      - /hdd_backup:/home/hdd_backup
     ports:
       - "445:445/tcp"
     #cap_add:

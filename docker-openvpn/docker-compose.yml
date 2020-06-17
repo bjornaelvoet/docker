@@ -9,8 +9,8 @@ services:
     #user: ${UID}:${GID}
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/openvpn/conf:/conf:ro
-      - ../server-conf/openvpn/pki:/pki:ro
+      - ../../server-conf/openvpn/conf:/conf:ro
+      - ../../server-conf/openvpn/pki:/pki:ro
     ports:
       - "1195:1195/tcp"
     cap_add:
@@ -30,8 +30,8 @@ services:
     #user: ${UID}:${GID}
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/openvpn/conf:/conf:ro
-      - ../server-conf/openvpn/pki:/pki:ro
+      - ../../server-conf/openvpn/conf:/conf:ro
+      - ../../server-conf/openvpn/pki:/pki:ro
     ports:
       - "1194:1194/udp"
     cap_add:

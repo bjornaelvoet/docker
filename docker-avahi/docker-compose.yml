@@ -9,8 +9,8 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/avahi:/conf:ro
-      - ../server-conf/avahi/services:/etc/avahi/services:ro
+      - ../../server-conf/avahi:/conf:ro
+      - ../../server-conf/avahi/services:/etc/avahi/services:ro
     ports:
       - "5353:5353/udp"
     #cap_add:

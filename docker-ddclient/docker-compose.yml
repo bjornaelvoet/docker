@@ -9,5 +9,5 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/ddclient:/config
+      - ../../server-conf/ddclient:/config
     #network_mode: host

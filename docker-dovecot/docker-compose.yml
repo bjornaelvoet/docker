@@ -8,7 +8,7 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/dovecot:/conf:ro
+      - ../../server-conf/dovecot:/conf:ro
       - /Data/maildata:/maildata
       - /Data/bjorn_aelvoet/Maildir:/import
     ports:

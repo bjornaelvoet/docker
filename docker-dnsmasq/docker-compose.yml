@@ -9,7 +9,7 @@ services:
     env_file: ./${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/dnsmasq:/conf:ro
+      - ../../server-conf/dnsmasq:/conf:ro
     ports:
       - "53:53/tcp"
       - "53:53/udp"

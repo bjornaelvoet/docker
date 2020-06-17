@@ -11,7 +11,7 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/minecraft-server:/conf:ro
+      - ../../server-conf/minecraft-server:/conf:ro
       - /Data/docker_data/minecraft_server:/data
     ports:
       - "25565:25565/tcp"

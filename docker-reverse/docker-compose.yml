@@ -11,10 +11,10 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/reverse/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ../server-conf/openvpn/pki:/etc/ssl/private:ro
-      - ../server-conf/plexconnect:/plexconnect:ro
-      - ../server-conf/plex:/plex:ro
+      - ../../server-conf/reverse/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../../server-conf/openvpn/pki:/etc/ssl/private:ro
+      - ../../server-conf/plexconnect:/plexconnect:ro
+      - ../../server-conf/plex:/plex:ro
     ports:
       - "80:80/tcp"
       - "443:443/tcp"

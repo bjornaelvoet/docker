@@ -11,7 +11,7 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/glances/glances.conf:/glances/conf/glances.conf:ro
+      - ../../server-conf/glances/glances.conf:/glances/conf/glances.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - "61208-61209:61208-61209/tcp"

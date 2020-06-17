@@ -11,7 +11,7 @@ services:
     #user: ${RUNAS_USERID}:${RUNAS_GROUPID}
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/rsnapshot:/conf:ro
+      - ../../server-conf/rsnapshot:/conf:ro
       - /Data:/data:ro
       - /hdd_backup:/backup
     #cap_add:
