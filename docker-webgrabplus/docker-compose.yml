@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
   webgrabplus:
-    image: linuxserver/webgrabplus
+    #image: linuxserver/webgrabplus
+    image: bjornaelvoet/webgrabplus 
     container_name: webgrabplus
     restart: always
     # Run as normal user
@@ -11,7 +12,7 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../server-conf/webgrabplus/:/config
+      - ../../server-conf/webgrabplus/:/config
       - /home/bjorn_aelvoet/docker_data/epg/:/data
     #ports:
     #  - "445:445/tcp"
@@ -22,9 +23,9 @@ services:
     #stdin_open: true
     #tty: true
 
-    #build:
-    #  dockerfile: Dockerfile
-    #  #args:
-    #  #  #No args defined
-    #  #  - DUMMY=dummy
-    #  context: .
+    build:
+      dockerfile: Dockerfile
+      #args:
+      #  #No args defined
+      #  - DUMMY=dummy
+      context: .
