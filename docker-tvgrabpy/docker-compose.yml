@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  tvgrabpy:
+    image: bjornaelvoet/tvgrabpy
+    container_name: tvgrabpy
+    restart: always
+    # Run as normal user
+    user: 1000:1001
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ${ENVIRONMENT}.env
+    volumes:
+      # Referencing the server-conf git repo
+      # - /home/bjornaelvoet/docker_data/tvgrabpy:/data
+      - ../../server-conf/tvgrabpy:/conf 
+    #cap_add:
+    #  - NET_ADMIN
+    #network_mode: host
+    #privileged: true
+    #stdin_open: true
+    #tty: true
+
+    build:
+      dockerfile: Dockerfile
+      #args:
+      #  #No args defined
+      #  - DUMMY=dummy
+      context: .
