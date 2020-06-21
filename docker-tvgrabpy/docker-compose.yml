@@ -11,8 +11,8 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      # - /home/bjornaelvoet/docker_data/tvgrabpy:/data
       - ../../server-conf/tvgrabpy:/conf 
+      - /home/bjorn_aelvoet/docker_data/epg:/data
     #cap_add:
     #  - NET_ADMIN
     #network_mode: host
