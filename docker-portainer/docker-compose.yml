@@ -1,9 +1,9 @@
 version: '3.7'
 
 services:
-  glances:
-    image: nicolargo/glances
-    container_name: glances
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
     restart: always
     # Run as normal user
     #user: 1000:1000
@@ -11,19 +11,21 @@ services:
     env_file: ${ENVIRONMENT}.env
     volumes:
       # Referencing the server-conf git repo
-      - ../../server-conf/glances/glances.conf:/glances/conf/glances.conf:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/bjorn_aelvoet/docker_data/portainer:/data 
     ports:
-      - "61208:61208/tcp"
-    devices:
-      - /dev/sda1:/dev/sda1
-      - /dev/sda2:/dev/sda2
-      - /dev/sdb1:/dev/sdb1
-      #- /dev/sdc1:/dev/sdc1  
-    pid: host
+      - "9000:9000/tcp"
+      - "8000:8000/tcp"
     #cap_add:
     #  - NET_ADMIN
     #network_mode: host
     #privileged: true
     #stdin_open: true
     #tty: true
+
+    #build:
+    #  dockerfile: Dockerfile
+    #  #args:
+    #  #  #No args defined
+    #  #  - DUMMY=dummy
+    #  context: .
