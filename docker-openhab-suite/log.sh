@@ -22,4 +22,5 @@ fi
 export GID
 
 # run build
-docker-compose logs
+docker-compose -f docker-compose-openhab.yml logs
+docker-compose -f docker-compose-suite.yml logs

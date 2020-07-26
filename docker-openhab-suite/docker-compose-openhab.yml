@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+
+  openhab:
+    image: "openhab/openhab:latest-alpine"
+    container_name: openhab
+    env_file: ${ENVIRONMENT}.env_openhab
+    #depends_on:
+    #  - influxdb
+    restart: always
+    #ports:
+    #  - "8080:8080"
+    #  - "8443:8443"
+    network_mode: host
+    #dns: 192.168.1.2
+    #dns_search: aelvoetnet.be
+    #networks:
+    #  - openhab
+    volumes:
+      - "../../server-conf/openhab/openhab_addons:/openhab/addons"
+      - "../../server-conf/openhab/openhab_conf:/openhab/conf"
+      - "/Data/docker_data/openhab_userdata:/openhab/userdata"
+
+#volumes:
+#  openhab_addons:
+#    driver: local
+#  openhab_conf:
+#    driver: local
+#  openhab_userdata:
+#    driver: local
+#  influxdb:
+#    driver: local
+#  grafana:
+#     driver: local

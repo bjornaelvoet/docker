@@ -22,4 +22,5 @@ fi
 export GID
 
 # run build
-docker-compose up
+docker-compose -f docker-compose-suite.yml up
+docker-compose -f docker-compose-openhab.yml up

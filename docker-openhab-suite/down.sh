@@ -22,4 +22,5 @@ fi
 export GID
 
 # Bring down
-docker-compose down
+docker-compose -f docker-compose-openhab.yml down
+docker-compose -f docker-compose-suite.yml down
