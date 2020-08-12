@@ -27,37 +27,16 @@ services:
       - 32412:32412/udp
       - 32413:32413/udp
       - 32414:32414/udp
-    networks:
-      plex:
-        ipv4_address: 192.168.4.2
+    #networks:
+    #  plex:
+    #    ipv4_address: 192.168.4.2
     #network_mode: host
     #privileged: true
     #stdin_open: true
     #tty: true
-  plexconnect:
-    image: bjornaelvoet/plexconnect
-    container_name: plexconnect
-    restart: always
-    depends_on:
-      - plex
-    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
-    env_file: ${ENVIRONMENT}.env_plexconnect
-    volumes:
-      # Referencing the server-conf git repo
-      - ./PlexConnect:/plexconnect
-    ports:
-      - 8081:80/tcp
-      - 4443:443/tcp
-    networks:
-      plex:
-        ipv4_address: 192.168.4.3
-    #network_mode: host
-    privileged: true
-    #stdin_open: true
-    #tty: true
-networks:
-  plex:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.4.0/24
+#networks:
+#  plex:
+#    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 192.168.4.0/24
