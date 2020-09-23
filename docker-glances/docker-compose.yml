@@ -13,13 +13,13 @@ services:
       # Referencing the server-conf git repo
       - ../../server-conf/glances/glances.conf:/glances/conf/glances.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/rootfs:ro
     ports:
       - "61208:61208/tcp"
-    devices:
-      - /dev/sda1:/dev/sda1
-      - /dev/sda2:/dev/sda2
-      - /dev/sdb1:/dev/sdb1
-      #- /dev/sdc1:/dev/sdc1  
+        #devices:
+            #- /dev/sda
+            #- /dev/sdb
+            #- /dev/sdc  
     pid: host
     #cap_add:
     #  - NET_ADMIN
