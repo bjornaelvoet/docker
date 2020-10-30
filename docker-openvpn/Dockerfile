@@ -1,8 +1,8 @@
-FROM alpine:3.9.6
-
-RUN apk --no-cache add openvpn iptables tzdata
+FROM alpine:latest
 
 ADD VERSION entrypoint.sh /app/
+
+RUN apk --no-cache add openvpn iptables tzdata
 
 WORKDIR /app
 
