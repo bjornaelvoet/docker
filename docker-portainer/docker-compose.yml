@@ -12,7 +12,7 @@ services:
     volumes:
       # Referencing the server-conf git repo
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/bjorn_aelvoet/docker_data/portainer:/data 
+      - /Data/docker_data/portainer:/data 
     ports:
       - "9000:9000/tcp"
       - "8000:8000/tcp"
