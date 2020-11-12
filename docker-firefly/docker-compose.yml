@@ -18,7 +18,7 @@ services:
       # entrypoint needs the user id to know; so pass the host passwd to fix
       - /etc/passwd:/etc/passwd:ro  
     ports:
-      - "8082:80/tcp"
+      - "8082:8080/tcp"
     networks:
       - firefly
     #cap_add:
@@ -41,7 +41,7 @@ services:
       # initdb needs the user id to know; so pass the host passwd to fix
       - /etc/passwd:/etc/passwd:ro
   csvimport:
-    image: fireflyiii/csv-importer:develop
+    image: fireflyiii/csv-importer
     depends_on:
       - firefly
     container_name: firefly_csvimport
@@ -51,7 +51,7 @@ services:
     # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
     env_file: ../../server-conf/firefly/${ENVIRONMENT}.env_csvimport
     ports:
-      - "8083:80/tcp"
+      - "8083:8080/tcp"
     networks:
       - firefly
     #cap_add:
