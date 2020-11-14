@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   firefly:
-    image: jc5x/firefly-iii
+    image: jc5x/firefly-iii:version-5.4.6
     depends_on:
       - postgres
     container_name: firefly
@@ -41,7 +41,7 @@ services:
       # initdb needs the user id to know; so pass the host passwd to fix
       - /etc/passwd:/etc/passwd:ro
   csvimport:
-    image: fireflyiii/csv-importer
+    image: fireflyiii/csv-importer:version-2.2.3
     depends_on:
       - firefly
     container_name: firefly_csvimport
