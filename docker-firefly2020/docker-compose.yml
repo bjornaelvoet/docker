@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  firefly2020:
+    image: jc5x/firefly-iii:latest
+    depends_on:
+      - fireflyiiidb2020
+    container_name: firefly2020
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ../../server-conf/firefly2020/${ENVIRONMENT}.env_firefly
+    volumes:
+      # Referencing the server-conf git repo
+      - /Data/docker_data/firefly2020_upload:/var/www/html/storage/upload
+    ports:
+      - "8084:8080/tcp"
+    networks:
+      - firefly2020
+  fireflyiiidb2020:
+    image: yobasystems/alpine-mariadb:latest
+    container_name: firefly2020_mariadb
+    restart: always
+    env_file: ../../server-conf/firefly2020/${ENVIRONMENT}.env_mariadb
+    networks: 
+      - firefly2020
+    volumes: 
+      - /Data/docker_data/firefly2020_mariadb:/var/lib/mysql
+  csvimport2020:
+    image: fireflyiii/csv-importer:latest
+    depends_on:
+      - firefly2020
+    container_name: firefly2020_csvimport
+    restart: always
+    # Environment must either be "test" or "prod" passed over the shell (e.g. ENVIRONMENT=prod docker-compose up)
+    env_file: ../../server-conf/firefly2020/${ENVIRONMENT}.env_csvimport
+    ports:
+      - "8085:8080/tcp"
+    networks:
+      - firefly2020
+networks:
+  firefly2020:
+    name: firefly2020
+    #driver: bridge
