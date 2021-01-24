@@ -57,6 +57,8 @@ def main():
 
     args = parser.parse_args()
 
+    print("Starting parsing of %s" % args.filename_input)
+    
     tree = ET.parse(args.filename_input)
     root = tree.getroot()
 
@@ -67,6 +69,10 @@ def main():
             #print(ET.tostring(child, encoding='utf8', method='xml'))
 
     writeXMLTV(tree, args.filename_output)
+
+    print("Plex friendly generation done to file %s" % args.filename_output)
+
+    return
             
 if __name__ == "__main__":
     main()
