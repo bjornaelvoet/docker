@@ -8,6 +8,7 @@ while true
 do
   echo "Executing..."
   mono WebGrab+Plus.exe "/config"
+  python3 /app/wg++/main.py -i "/data/guide.xml" -o "/data/guide_plex.xml" -m 80
   echo "Sleeping..."  
   sleep 28800
 done
