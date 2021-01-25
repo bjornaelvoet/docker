@@ -1,0 +1,472 @@
+{   
+        "Actie":
+        ""
+    ,
+    
+        "Actualiteiten":
+        "news"
+    ,
+    
+        "Animatie":
+        "kids"
+    ,
+    
+        "Anime":
+        "kids"
+    ,
+    
+        "Avontuur":
+        ""
+    ,
+    
+        "Bakken":
+        ""
+    ,
+    
+        "Bedrijfsinnovatie":
+        ""
+    ,
+    
+        "Beroemdheid":
+        ""
+    ,
+    
+        "Beroep":
+        ""
+    ,
+    
+        "Bigbrother":
+        "series"
+    ,
+    
+        "Biografisch":
+        ""
+    ,
+    
+        "Bruiloft":
+        ""
+    ,
+    
+        "CGI":
+        ""
+    ,
+    
+        "Consumenten":
+        ""
+    ,
+    
+        "Consumptie":
+        ""
+    ,
+    
+        "Crosscountry fietsen":
+        "sports"
+    ,
+    
+        "Cultuur":
+        ""
+    ,
+    
+        "Darts":
+        "sports"
+    ,
+    
+        "Dating":
+        ""
+    ,
+    
+        "Detective":
+        "movies"
+    ,
+    
+        "Dieren":
+        ""
+    ,
+    
+        "Diverse onderwerpen":
+        ""
+    ,
+    
+        "Dood":
+        ""
+    ,
+    
+        "Drama":
+        "movies"
+    ,
+    
+        "Economie":
+        ""
+    ,
+    
+        "Entertainment":
+        ""
+    ,
+    
+        "Familie":
+        ""
+    ,
+    
+        "Fantasie":
+        ""
+    ,
+    
+        "Filosofie":
+        ""
+    ,
+    
+        "Fitness":
+        ""
+    ,
+    
+        "Gaming":
+        "sports"
+    ,
+    
+        "Geneeskunde":
+        ""
+    ,
+    
+        "Geschiedenis":
+        ""
+    ,
+    
+        "Gezinsleven":
+        ""
+    ,
+    
+        "Gezondheid":
+        ""
+    ,
+    
+        "Gids":
+        ""
+    ,
+    
+        "Grappige video's":
+        ""
+    ,
+    
+        "Gymnastiek":
+        ""
+    ,
+    
+        "Hedendaagse geschiedenis":
+        ""
+    ,
+    
+        "Herhalingsblok":
+        ""
+    ,
+    
+        "Hits":
+        ""
+    ,
+    
+        "Hobby":
+        ""
+    ,
+    
+        "Horror":
+        ""
+    ,
+    
+        "Hotel":
+        ""
+    ,
+    
+        "Huishouden":
+        ""
+    ,
+    
+        "Huwelijk":
+        ""
+    ,
+    
+        "IJsracen":
+        "sports"
+    ,
+    
+        "Internationaal":
+        ""
+    ,
+    
+        "Jeugd":
+        "kids"
+    ,
+    
+        "Juridisch":
+        ""
+    ,
+    
+        "Kerk":
+        ""
+    ,
+    
+        "Kinderen":
+        "kids"
+    ,
+    
+        "Klei-animatie":
+        "kids"
+    ,
+    
+        "Koken":
+        ""
+    ,
+    
+        "Komedie":
+        ""
+    ,
+    
+        "Kunst":
+        ""
+    ,
+    
+        "Land":
+        ""
+    ,
+    
+        "Landschap":
+        ""
+    ,
+    
+        "Leven":
+        ""
+    ,
+    
+        "Lifestyle":
+        ""
+    ,
+    
+        "Literatuur":
+        ""
+    ,
+    
+        "Lokaal":
+        ""
+    ,
+    
+        "Maatschappelijke kwesties":
+        ""
+    ,
+    
+        "Makeover":
+        ""
+    ,
+    
+        "Medisch":
+        ""
+    ,
+    
+        "Mensen":
+        ""
+    ,
+    
+        "Milieuvraagstukken":
+        ""
+    ,
+    
+        "Misdaad":
+        ""
+    ,
+    
+        "Mode":
+        ""
+    ,
+    
+        "Modellering":
+        ""
+    ,
+    
+        "Muziek":
+        ""
+    ,
+    
+        "Mysterie":
+        ""
+    ,
+    
+        "Nader aan te kondigen":
+        ""
+    ,
+    
+        "Natuur":
+        ""
+    ,
+    
+        "Nieuws":
+        "news"
+    ,
+    
+        "Onderwijs":
+        ""
+    ,
+    
+        "Onroerend goed":
+        ""
+    ,
+    
+        "Oorlog":
+        ""
+    ,
+    
+        "Pandjeshuis":
+        ""
+    ,
+    
+        "Politie":
+        ""
+    ,
+    
+        "Politiek":
+        "news"
+    ,
+    
+        "Psychologisch":
+        ""
+    ,
+    
+        "Quiz":
+        ""
+    ,
+    
+        "Reality":
+        ""
+    ,
+    
+        "Recht":
+        ""
+    ,
+    
+        "Reizen":
+        ""
+    ,
+    
+        "Religie":
+        ""
+    ,
+    
+        "Religieus":
+        ""
+    ,
+    
+        "Renovatie":
+        ""
+    ,
+    
+        "Restaurant":
+        ""
+    ,
+    
+        "Romantiek":
+        ""
+    ,
+    
+        "Romantische komedie":
+        ""
+    ,
+    
+        "Science-fiction":
+        ""
+    ,
+    
+        "Senioren":
+        ""
+    ,
+    
+        "Series":
+        "series"
+    ,
+    
+        "Sitcom":
+        "series"
+    ,
+    
+        "Sketch":
+        ""
+    ,
+    
+        "Sociale media":
+        ""
+    ,
+    
+        "Speciale uitzending":
+        ""
+    ,
+    
+        "Sport":
+        "sports"
+    ,
+    
+        "Tekenfilm":
+        "kids"
+    ,
+    
+        "Telenovela":
+        "series"
+    ,
+    
+        "Thriller":
+        "movies"
+    ,
+    
+        "Tiener":
+        "kids"
+    ,
+    
+        "Toerisme":
+        ""
+    ,
+    
+        "Toneelkomedie":
+        ""
+    ,
+    
+        "Tuinieren":
+        ""
+    ,
+    
+        "Uitdaging":
+        ""
+    ,
+    
+        "Verkeer":
+        ""
+    ,
+    
+        "Virtuele realiteit":
+        ""
+    ,
+    
+        "Voedsel":
+        ""
+    ,
+    
+        "Voetbal":
+        "sports"
+    ,
+    
+        "Wederopbouw":
+        ""
+    ,
+    
+        "Wedstrijd":
+        ""
+    ,
+    
+        "Wetenschap":
+        ""
+    ,
+    
+        "Wilde natuur":
+        ""
+    ,
+    
+        "Zelfverbetering":
+        ""
+    ,
+    
+        "Ziekenhuis":
+        ""    
+}
